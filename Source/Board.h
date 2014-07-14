@@ -8,10 +8,12 @@
 
 #import "CCSprite.h"
 #import "Tiger.h"
+#import "Goat.h"
 
 @interface Board : CCNode
 
 + (Board*) sharedBoard;
 - (BOOL) placeTiger:(Tiger *) tiger;
+- (BOOL) placeGoat:(Goat *) goat;
 
 @end

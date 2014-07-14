@@ -43,6 +43,18 @@ static Board *sharedBoard = nil;
     return false;
 }
 
+- (BOOL)placeGoat:(Goat *)goat {
+    
+    CCNode* adjacentLatticePoint = [self getAdjacentLatticePoint:goat];
+    if(adjacentLatticePoint != nil)
+    {
+        goat.inBoard = TRUE;
+        goat.position = [goat convertToNodeSpace:[adjacentLatticePoint convertToWorldSpace:adjacentLatticePoint.position]];
+        return true;
+    }
+    return false;
+}
+
 - (CCNode *) getAdjacentLatticePoint:(CCSprite *)sprite {
     
     CGPoint spriteposition = [sprite convertToWorldSpace:sprite.position];

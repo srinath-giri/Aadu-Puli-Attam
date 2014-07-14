@@ -7,13 +7,8 @@
 //
 
 #import "Gameplay.h"
-#import "Tiger.h"
 
-@implementation Gameplay {
-    Tiger *_tiger1;
-    Tiger *_tiger2;
-    Tiger *_tiger3;
-}
+@implementation Gameplay
 
 - (void)didLoadFromCCB {
     self.userInteractionEnabled = TRUE;
@@ -23,6 +18,5 @@
     // reload gameplay
     [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
 }
-
 
 @end
