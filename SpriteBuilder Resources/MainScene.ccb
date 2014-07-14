@@ -163,7 +163,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.25</real>
+							<real>0.25624999403953552</real>
 							<integer>1</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -187,8 +187,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.1814401149749756</real>
-							<real>0.55107945203781128</real>
+							<real>1.1740901470184326</real>
+							<real>0.39158964157104492</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -281,8 +281,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.65497761964797974</real>
-							<real>0.65838521718978882</real>
+							<real>0.67503803968429565</real>
+							<real>0.71083468198776245</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -443,6 +443,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -501,8 +503,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.5</real>
-							<real>1.5</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -559,7 +561,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Start</string>
+							<string>Play</string>
 							<false/>
 						</array>
 					</dict>
@@ -651,7 +653,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>14</real>
+							<real>22</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -678,7 +680,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>10</real>
+							<real>20</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -689,7 +691,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
+							<real>10</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -769,8 +771,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

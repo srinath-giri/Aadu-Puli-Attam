@@ -42,10 +42,14 @@ static Board *sharedBoard = nil;
 }
 
 - (CCNode *) getAdjacentLatticePoint:(CCSprite *)sprite {
-    CCLOG(@"ccp:%f %f",sprite.position.x, sprite.position.y);
-    CGPoint spriteposition = [sprite convertToWorldSpace:sprite.position];
     
+    CGPoint spriteposition = [sprite convertToWorldSpace:sprite.position];
+    CCLOG(@"ccp:%f %f",spriteposition.x, spriteposition.y);
+
     for (CCNode* lattice in lattices) {
+        CGPoint latticeposition = [lattice convertToWorldSpace:lattice.position];
+        CCLOG(@"ccp:%f %f",latticeposition.x, latticeposition.y);
+
         if (CGRectContainsPoint([lattice boundingBox], [lattice convertToNodeSpace:spriteposition] )) {
             return lattice;
         }
