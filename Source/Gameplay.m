@@ -20,8 +20,9 @@
 }
 
 - (void)replay {
-    // reload this level
+    // reload gameplay
     [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
 }
+
 
 @end
