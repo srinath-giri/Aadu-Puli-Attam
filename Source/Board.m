@@ -17,9 +17,9 @@
 
 static Board *sharedBoard = nil;
 
-- (id)init {
+- (void)didLoadFromCCB {
+    sharedBoard = self;
     lattices = [NSArray arrayWithObjects:_lattice1,_lattice2,_lattice3,nil];
-    return self;
 }
 
 + (Board *) sharedBoard
