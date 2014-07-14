@@ -20,6 +20,7 @@ static Board *sharedBoard = nil;
 - (void)didLoadFromCCB {
     sharedBoard = self;
     lattices = [NSArray arrayWithObjects:_lattice1,_lattice2,_lattice3,nil];
+    [Tiger movement:true];
 }
 
 + (Board *) sharedBoard
@@ -38,6 +39,8 @@ static Board *sharedBoard = nil;
     {
         tiger.inBoard = TRUE;
         tiger.position = [tiger convertToNodeSpace:[adjacentLatticePoint convertToWorldSpace:adjacentLatticePoint.position]];
+        [Tiger movement:false];
+        [Goat movement:true];
         return true;
     }
     return false;
@@ -50,6 +53,8 @@ static Board *sharedBoard = nil;
     {
         goat.inBoard = TRUE;
         goat.position = [goat convertToNodeSpace:[adjacentLatticePoint convertToWorldSpace:adjacentLatticePoint.position]];
+        [Goat movement:false];
+        [Tiger movement:true];
         return true;
     }
     return false;

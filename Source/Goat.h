@@ -12,4 +12,6 @@
 
 @property (nonatomic, assign) BOOL inBoard;
 
++ (void)movement:(BOOL) enable;
+
 @end

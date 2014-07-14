@@ -8,7 +8,9 @@
 
 #import "Gameplay.h"
 
-@implementation Gameplay
+@implementation Gameplay {
+    
+}
 
 - (void)didLoadFromCCB {
     self.userInteractionEnabled = TRUE;
