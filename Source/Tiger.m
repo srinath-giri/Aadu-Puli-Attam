@@ -9,10 +9,13 @@
 #import "Tiger.h"
 #import "Board.h"
 
-@implementation Tiger
+@implementation Tiger {
+    CGPoint previousPosition;
+}
 
 - (void)onEnter {
     [super onEnter];
+    previousPosition = self.position;
     self.userInteractionEnabled = TRUE;
 }
 
@@ -30,17 +33,15 @@
 
 - (void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    [self placeTiger];
+    if([[Board sharedBoard] placeTiger:self])
+        previousPosition = self.position;
+    else
+        self.position = previousPosition;
 }
 
 - (void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    [self placeTiger];
-}
-
-- (void)placeTiger
-{
-    [[Board sharedBoard] placeTiger:self];
+    self.position = previousPosition;
 }
 
 @end

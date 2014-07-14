@@ -12,6 +12,6 @@
 @interface Board : CCNode
 
 + (Board*) sharedBoard;
-- (void) placeTiger:(Tiger *) tiger;
+- (BOOL) placeTiger:(Tiger *) tiger;
 
 @end

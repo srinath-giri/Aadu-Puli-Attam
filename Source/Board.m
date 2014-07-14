@@ -31,14 +31,16 @@ static Board *sharedBoard = nil;
     return sharedBoard;
 }
 
-- (void)placeTiger:(Tiger *)tiger {
+- (BOOL)placeTiger:(Tiger *)tiger {
     
     CCNode* adjacentLatticePoint = [self getAdjacentLatticePoint:tiger];
     if(adjacentLatticePoint != nil)
     {
         tiger.inBoard = TRUE;
         tiger.position = [tiger convertToNodeSpace:[adjacentLatticePoint convertToWorldSpace:adjacentLatticePoint.position]];
+        return true;
     }
+    return false;
 }
 
 - (CCNode *) getAdjacentLatticePoint:(CCSprite *)sprite {
