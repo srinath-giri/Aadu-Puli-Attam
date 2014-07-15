@@ -41,6 +41,7 @@ static Board *sharedBoard = nil;
     sharedBoard = self;
     lattices = [NSArray arrayWithObjects:_lattice1,_lattice2,_lattice3,_lattice4,_lattice5,_lattice6,_lattice7,_lattice8,_lattice9,_lattice10,_lattice11,_lattice12,_lattice13,_lattice14,_lattice15,_lattice16,_lattice17,_lattice18,_lattice19,_lattice20,_lattice21,_lattice22,_lattice23,nil];
     [Goat movement:true];
+    [Tiger movement:false];    
 }
 
 + (Board *)sharedBoard
@@ -55,10 +56,10 @@ static Board *sharedBoard = nil;
 - (BOOL)placeTiger:(Tiger *)tiger {
     
     CCNode* adjacentLatticePoint = [self getAdjacentLatticePoint:tiger];
-    if(adjacentLatticePoint != nil)
+    //if(adjacentLatticePoint != nil)
     {
         tiger.inBoard = TRUE;
-        tiger.position = [tiger convertToNodeSpace:[adjacentLatticePoint convertToWorldSpace:adjacentLatticePoint.position]];
+        //tiger.position = [tiger convertToNodeSpace:[adjacentLatticePoint convertToWorldSpace:adjacentLatticePoint.position]];
         [Tiger movement:false];
         [Goat movement:true];
         return true;
@@ -69,10 +70,10 @@ static Board *sharedBoard = nil;
 - (BOOL)placeGoat:(Goat *)goat {
     
     CCNode* adjacentLatticePoint = [self getAdjacentLatticePoint:goat];
-    if(adjacentLatticePoint != nil)
+    //if(adjacentLatticePoint != nil)
     {
         goat.inBoard = TRUE;
-        goat.position = [goat convertToNodeSpace:[adjacentLatticePoint convertToWorldSpace:adjacentLatticePoint.position]];
+        //goat.position = [goat convertToNodeSpace:[adjacentLatticePoint convertToWorldSpace:adjacentLatticePoint.position]];
         [Goat movement:false];
         [Tiger movement:true];
         return true;
