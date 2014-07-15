@@ -7,6 +7,8 @@
 //
 
 #import "CCNode.h"
+#import "Goat.h"
+#import "Tiger.h"
 
 @interface Gameplay : CCNode
 
