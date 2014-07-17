@@ -35,17 +35,18 @@ static BOOL enabled = false;
     if (enabled) {
     CGPoint touchLocation = [touch locationInNode:self.parent];
     self.position = touchLocation;
-    //CCLOG(@"ccp:%f %f",self.position.x,self.position.y);
+    //CCLOG(@"touchMoved:%f %f",self.position.x,self.position.y);
     }
 }
 
 - (void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
     if (enabled) {
-    if([[Board sharedBoard] placeGoat:self])
-        previousPosition = self.position;
-    else
-        self.position = previousPosition;
+        //CCLOG(@"touchEnded:%f %f",self.position.x,self.position.y);
+        if([[Board sharedBoard] moveGoat:self])
+            previousPosition = self.position;
+        else
+            self.position = previousPosition;
     }
 }
 

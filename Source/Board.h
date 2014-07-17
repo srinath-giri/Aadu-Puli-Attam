@@ -13,7 +13,12 @@
 @interface Board : CCNode
 
 + (Board*) sharedBoard;
-- (BOOL) placeTiger:(Tiger *) tiger;
-- (BOOL) placeGoat:(Goat *) goat;
+//- (BOOL) placeTiger:(Tiger *) tiger;
+- (BOOL) moveTiger:(Tiger *) tiger;
+- (BOOL) moveGoat:(Goat *) goat;
+- (BOOL) checkIfValidTigerMove:(CCNode*) destinationLatticePoint;
+- (BOOL) checkIfValidGoatMove:(CCNode*) destinationLatticePoint;
+- (CGPoint) centerOfLatticePoint:(CCNode*) latticePoint;
+- (void) startGame;
 
 @end

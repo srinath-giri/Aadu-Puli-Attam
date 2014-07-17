@@ -32,6 +32,8 @@
     CCNode* _lattice21;
     CCNode* _lattice22;
     CCNode* _lattice23;
+    CCSprite* _turnGoat;
+    CCSprite* _turnTiger;
     NSArray* lattices;
 }
 
@@ -40,8 +42,6 @@ static Board *sharedBoard = nil;
 - (void)didLoadFromCCB {
     sharedBoard = self;
     lattices = [NSArray arrayWithObjects:_lattice1,_lattice2,_lattice3,_lattice4,_lattice5,_lattice6,_lattice7,_lattice8,_lattice9,_lattice10,_lattice11,_lattice12,_lattice13,_lattice14,_lattice15,_lattice16,_lattice17,_lattice18,_lattice19,_lattice20,_lattice21,_lattice22,_lattice23,nil];
-    [Goat movement:true];
-    [Tiger movement:false];    
 }
 
 + (Board *)sharedBoard
@@ -53,29 +53,57 @@ static Board *sharedBoard = nil;
     return sharedBoard;
 }
 
-- (BOOL)placeTiger:(Tiger *)tiger {
+//- (BOOL)placeTiger:(Tiger *)tiger {
+    
+    //CCNode* adjacentLatticePoint = [self getAdjacentLatticePoint:tiger];
+    //if(adjacentLatticePoint != nil)
+    //{
+        //tiger.position = [self centerOfLatticePoint:adjacentLatticePoint];
+        //[tiger removeFromParent];
+        //[adjacentLatticePoint addChild:tiger];
+        //return true;
+    //}
+    //return false;
+//}
+
+- (BOOL)moveTiger:(Tiger *)tiger {
     
     CCNode* adjacentLatticePoint = [self getAdjacentLatticePoint:tiger];
-    //if(adjacentLatticePoint != nil)
-    {
-        tiger.inBoard = TRUE;
-        //tiger.position = [tiger convertToNodeSpace:[adjacentLatticePoint convertToWorldSpace:adjacentLatticePoint.position]];
+    
+    if(adjacentLatticePoint != nil && [self checkIfValidTigerMove:adjacentLatticePoint])
+    {        
+        tiger.position = [self centerOfLatticePoint:adjacentLatticePoint];
+        [tiger removeFromParent];
+        [adjacentLatticePoint addChild:tiger];
+    
+        _turnTiger.visible = false;
+        _turnGoat.visible = true;
+        
         [Tiger movement:false];
         [Goat movement:true];
+        
         return true;
     }
     return false;
 }
 
-- (BOOL)placeGoat:(Goat *)goat {
+- (BOOL)moveGoat:(Goat *)goat {
     
     CCNode* adjacentLatticePoint = [self getAdjacentLatticePoint:goat];
-    //if(adjacentLatticePoint != nil)
+    
+    if(adjacentLatticePoint != nil && [self checkIfValidGoatMove:adjacentLatticePoint])
     {
-        goat.inBoard = TRUE;
-        //goat.position = [goat convertToNodeSpace:[adjacentLatticePoint convertToWorldSpace:adjacentLatticePoint.position]];
+        goat.position = [self centerOfLatticePoint:adjacentLatticePoint];
+        [goat removeFromParent];
+        [adjacentLatticePoint addChild:goat];
+        
+        _turnGoat.visible = false;
+        _turnTiger.visible = true;
+        
         [Goat movement:false];
         [Tiger movement:true];
+        
+        goat.inBoard = true;
         return true;
     }
     return false;
@@ -83,18 +111,39 @@ static Board *sharedBoard = nil;
 
 - (CCNode *)getAdjacentLatticePoint:(CCSprite *)sprite {
     
-    CGPoint spriteposition = [sprite convertToWorldSpace:sprite.position];
-    CCLOG(@"ccp:%f %f",spriteposition.x, spriteposition.y);
+    CGPoint spriteposition = [sprite.parent convertToWorldSpace:sprite.position];
+    //CCLOG(@"spriteposition:%f %f",spriteposition.x, spriteposition.y);
 
     for (CCNode* lattice in lattices) {
-        CGPoint latticeposition = [lattice convertToWorldSpace:lattice.position];
-        CCLOG(@"ccp:%f %f",latticeposition.x, latticeposition.y);
-
-        if (CGRectContainsPoint([lattice boundingBox], [lattice convertToNodeSpace:spriteposition] )) {
+        //CCLOG(@"latticeposition:%f %f",lattice.position.x, lattice.position.y);
+        
+        CGPoint spritepositionlattice = [lattice.parent convertToNodeSpace:spriteposition];
+        //CCLOG(@"spritepositionlattice:%f %f",spritepositionlattice.x, spritepositionlattice.y);
+              
+        if (CGRectContainsPoint([lattice boundingBox], spritepositionlattice )) {
             return lattice;
         }
     }
     return nil;
+}
+
+- (BOOL) checkIfValidTigerMove:(CCNode*) destinationLatticePoint {
+    return true;
+}
+
+- (BOOL) checkIfValidGoatMove:(CCNode*) destinationLatticePoint {
+    return true;
+}
+
+- (CGPoint) centerOfLatticePoint:(CCNode*) latticePoint {
+    return ccp([latticePoint boundingBox].size.width / 2, [latticePoint boundingBox].size.height / 2);
+}
+
+- (void) startGame {
+    _turnGoat.visible = true;
+    _turnTiger.visible = false;
+    [Goat movement:true];
+    [Tiger movement:false];
 }
 
 @end

@@ -42,7 +42,7 @@ static BOOL enabled = false;
 - (void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
     if (enabled) {
-    if([[Board sharedBoard] placeTiger:self])
+    if([[Board sharedBoard] moveTiger:self])
         previousPosition = self.position;
     else
         self.position = previousPosition;

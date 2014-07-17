@@ -12,4 +12,6 @@
 
 @interface Gameplay : CCNode
 
+- (void) start;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "Gameplay.h"
+#import "Board.h"
 
 @implementation Gameplay {
     
@@ -30,11 +31,20 @@
     Tiger *_tiger3;
 }
 
-- (void)didLoadFromCCB {
+- (void) didLoadFromCCB {
+    [self start];
     self.userInteractionEnabled = TRUE;
+    
 }
 
-- (void)replay {
+- (void) start {
+   // [[Board sharedBoard] placeTiger:_tiger1];
+   // [[Board sharedBoard] placeTiger:_tiger2];
+   // [[Board sharedBoard] placeTiger:_tiger3];
+    [[Board sharedBoard] startGame];
+}
+
+- (void) replay {
     // reload gameplay
     [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
 }
