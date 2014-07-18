@@ -52,6 +52,7 @@
     CCNode* _lattice23;
     CCSprite* _turnGoat;
     CCSprite* _turnTiger;
+    CCLabelTTF* _goatsAlive;
     NSArray* lattices;
     NSArray* line1;
     NSArray* line2;
@@ -191,6 +192,7 @@ static Board *sharedBoard = nil;
 - (void) eatGoat:(Goat *) goat {
     [goat removeFromParent];
     goat.isAlive = false;
+    [_goatsAlive setString:[NSString stringWithFormat:@"%i", [self numberOfGoatsAlive]]];
 }
 
 - (BOOL) checkIfValidGoat:(Goat *)goat moveFrom:(CCNode *)sourceLatticePoint To:(CCNode *)destinationLatticePoint {
@@ -223,6 +225,14 @@ static Board *sharedBoard = nil;
         if(goat.inBoard == false) return false;
     }
     return true;
+}
+
+- (NSUInteger) numberOfGoatsAlive {
+    NSUInteger aliveCount = 0;
+    for (Goat* goat in goats) {
+        if(goat.isAlive) aliveCount++;
+    }
+    return aliveCount;
 }
 
 - (CGPoint) centerOfLatticePoint:(CCNode*) latticePoint {

@@ -19,6 +19,7 @@
 - (BOOL) checkIfValidGoat:(Goat *)goat moveFrom:(CCNode *)sourceLatticePoint To:(CCNode *)destinationLatticePoint;
 - (BOOL) checkIfAllGoatsAreInBoard;
 - (void) eatGoat:(Goat *) goat;
+- (NSUInteger) numberOfGoatsAlive;
 - (CGPoint) centerOfLatticePoint:(CCNode*) latticePoint;
 - (void) startGame;
 
