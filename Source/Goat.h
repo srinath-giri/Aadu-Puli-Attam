@@ -11,6 +11,7 @@
 @interface Goat : CCSprite
 
 @property (nonatomic, assign) BOOL inBoard;
+@property (nonatomic, assign) BOOL isAlive;
 
 + (void)movement:(BOOL) enable;
 

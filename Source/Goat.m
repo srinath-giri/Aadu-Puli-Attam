@@ -18,6 +18,8 @@ static BOOL enabled = false;
 - (void)onEnter {
     [super onEnter];
     previousPosition = self.position;
+    self.inBoard = false;
+    self.isAlive = true;
     self.userInteractionEnabled = TRUE;
 }
 
