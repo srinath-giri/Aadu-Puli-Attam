@@ -190,6 +190,10 @@ static Board *sharedBoard = nil;
 }
 
 - (void) eatGoat:(Goat *) goat {
+    CCParticleSystem *explosion = (CCParticleSystem *)[CCBReader load:@"GoatExplosion"];
+    explosion.autoRemoveOnFinish = TRUE;
+    explosion.position = goat.position;
+    [goat.parent addChild:explosion];
     [goat removeFromParent];
     goat.isAlive = false;
     [_goatsAlive setString:[NSString stringWithFormat:@"%i", [self numberOfGoatsAlive]]];
