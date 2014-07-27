@@ -2111,6 +2111,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -2606,8 +2608,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -2887,7 +2887,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -2949,7 +2949,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3011,7 +3011,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3073,7 +3073,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3135,7 +3135,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3197,7 +3197,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3259,7 +3259,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3321,7 +3321,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3383,7 +3383,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3445,7 +3445,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3507,7 +3507,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3569,7 +3569,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3631,7 +3631,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3693,7 +3693,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -3755,7 +3755,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Goat.ccb</string>
+						<string>ShakingGoat.ccb</string>
 					</dict>
 				</array>
 			</dict>

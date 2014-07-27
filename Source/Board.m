@@ -139,7 +139,7 @@ static Board *sharedBoard = nil;
     return false;
 }
 
-- (CCNode *)getAdjacentLatticePoint:(CCSprite *)sprite {
+- (CCNode *)getAdjacentLatticePoint:(CCNode *)sprite {
     
     CGPoint spriteposition = [sprite.parent convertToWorldSpace:sprite.position];
     //CCLOG(@"spriteposition:%f %f",spriteposition.x, spriteposition.y);
