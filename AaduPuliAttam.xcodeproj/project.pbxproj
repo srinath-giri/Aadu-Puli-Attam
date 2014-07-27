@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392007918EE8E3300B6C429 /* GLKit.framework */; };
-		A618E5B5197BB5BF007C71F0 /* ShakingGoat.m in Sources */ = {isa = PBXBuildFile; fileRef = A618E5B4197BB5BF007C71F0 /* ShakingGoat.m */; };
 		A61A1EFF19733B3800CCF2B2 /* Tiger.m in Sources */ = {isa = PBXBuildFile; fileRef = A61A1EFE19733B3800CCF2B2 /* Tiger.m */; };
 		A61A1F0319733C2900CCF2B2 /* Gameplay.m in Sources */ = {isa = PBXBuildFile; fileRef = A61A1F0219733C2900CCF2B2 /* Gameplay.m */; };
 		A61A1F07197379EB00CCF2B2 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = A61A1F06197379EB00CCF2B2 /* Board.m */; };
@@ -62,8 +61,6 @@
 
 /* Begin PBXFileReference section */
 		8392007918EE8E3300B6C429 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		A618E5B3197BB5BF007C71F0 /* ShakingGoat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShakingGoat.h; path = Source/ShakingGoat.h; sourceTree = "<group>"; };
-		A618E5B4197BB5BF007C71F0 /* ShakingGoat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShakingGoat.m; path = Source/ShakingGoat.m; sourceTree = "<group>"; };
 		A61A1EFD19733B3800CCF2B2 /* Tiger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tiger.h; path = Source/Tiger.h; sourceTree = "<group>"; };
 		A61A1EFE19733B3800CCF2B2 /* Tiger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tiger.m; path = Source/Tiger.m; sourceTree = "<group>"; };
 		A61A1F0119733C2900CCF2B2 /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gameplay.h; path = Source/Gameplay.h; sourceTree = "<group>"; };
@@ -148,8 +145,6 @@
 				A61A1F0219733C2900CCF2B2 /* Gameplay.m */,
 				A61A1F05197379EB00CCF2B2 /* Board.h */,
 				A61A1F06197379EB00CCF2B2 /* Board.m */,
-				A618E5B3197BB5BF007C71F0 /* ShakingGoat.h */,
-				A618E5B4197BB5BF007C71F0 /* ShakingGoat.m */,
 				A61A1EFD19733B3800CCF2B2 /* Tiger.h */,
 				A61A1EFE19733B3800CCF2B2 /* Tiger.m */,
 				A61A1F0D1973D15B00CCF2B2 /* Goat.h */,
@@ -365,7 +360,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A618E5B5197BB5BF007C71F0 /* ShakingGoat.m in Sources */,
 				A61A1F07197379EB00CCF2B2 /* Board.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				A61A1F0F1973D15B00CCF2B2 /* Goat.m in Sources */,

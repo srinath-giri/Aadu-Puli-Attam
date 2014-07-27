@@ -8,7 +8,7 @@
 
 #import "CCSprite.h"
 
-@interface Goat : CCSprite
+@interface Goat : CCNode
 
 @property (nonatomic, assign) BOOL inBoard;
 @property (nonatomic, assign) BOOL isAlive;

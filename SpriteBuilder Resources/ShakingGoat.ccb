@@ -190,7 +190,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>0.69999998807907104</real>
+						<real>-1.2000007629394531</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -328,11 +328,11 @@
 			<key>length</key>
 			<real>12</real>
 			<key>name</key>
-			<string>Goat Headshake Timeline</string>
+			<string>HeadShake</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>12</real>
+			<real>5.0333333015441895</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

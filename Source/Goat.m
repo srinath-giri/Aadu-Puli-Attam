@@ -21,6 +21,13 @@ static BOOL enabled = false;
     self.inBoard = false;
     self.isAlive = true;
     self.userInteractionEnabled = TRUE;
+    float delay = (arc4random() % 12000) / 1000.f;
+    [self performSelector:@selector(startHeadShake) withObject:nil afterDelay:delay];
+}
+
+- (void)startHeadShake {
+    CCAnimationManager* animationManager = self.userObject;
+    [animationManager runAnimationsForSequenceNamed:@"HeadShake"];
 }
 
 + (void)movement:(BOOL) enable {
