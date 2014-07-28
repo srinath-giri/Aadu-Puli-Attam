@@ -11,6 +11,36 @@
 	<key>fileVersion</key>
 	<integer>1</integer>
 	<key>translations</key>
-	<array/>
+	<array>
+		<dict>
+			<key>key</key>
+			<string>Sample Text
+Sample Text
+Sample Text
+Sample Text
+Sample Text
+Sample Text
+Sample Text
+Sample Text
+Sample Text
+Sample TextSample Text
+
+Sample Text
+
+
+Sample Text
+Sample Text
+Sample Text
+Sample Text
+
+Sample Text
+Sample Text
+Sample Text
+Sample Text
+Sample Text</string>
+			<key>translations</key>
+			<dict/>
+		</dict>
+	</array>
 </dict>
 </plist>

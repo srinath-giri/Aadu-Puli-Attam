@@ -15,4 +15,8 @@
     [[CCDirector sharedDirector] replaceScene:gameplayScene];
 }
 
+- (void)showCredits {
+    [[CCDirector sharedDirector] replaceScene:[CCBReader loadAsScene:@"CreditsScene"]];
+}
+
 @end
