@@ -34,6 +34,11 @@ static BOOL enabled = false;
     [self performSelector:@selector(startHeadShake) withObject:nil afterDelay:delay];
 }
 
+- (void)pauseHeadShake {
+    CCAnimationManager* animationManager = self.userObject;
+    [animationManager setPaused:YES];
+}
+
 + (void)movement:(BOOL) enable {
     enabled = enable;
 }

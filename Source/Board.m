@@ -128,6 +128,11 @@ static Board *sharedBoard = nil;
     {
         goat.position = [self centerOfLatticePoint:adjacentLatticePoint];
         goat.position = ccp(goat.position.x+6,goat.position.y-6);
+        
+        [goat pauseHeadShake];
+        CCActionRotateTo *resetRotation = [CCActionRotateTo actionWithDuration:0.25 angle:0.0f];
+        [goat runAction:resetRotation];
+        
         [goat removeFromParent];
         [adjacentLatticePoint addChild:goat];
         
@@ -140,7 +145,7 @@ static Board *sharedBoard = nil;
         [Tiger movement:true];
         
         goat.inBoard = true;
-        [goat startHeadShake];
+        [goat startHeadShakeWithRandomDelay];
         return true;
     }
     return false;

@@ -16,4 +16,5 @@
 + (void)movement:(BOOL) enable;
 - (void)startHeadShake;
 - (void)startHeadShakeWithRandomDelay;
+- (void)pauseHeadShake;
 @end
