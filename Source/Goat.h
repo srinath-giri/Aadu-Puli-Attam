@@ -14,5 +14,6 @@
 @property (nonatomic, assign) BOOL isAlive;
 
 + (void)movement:(BOOL) enable;
-
+- (void)startHeadShake;
+- (void)startHeadShakeWithRandomDelay;
 @end

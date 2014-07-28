@@ -78,8 +78,8 @@
 				<string>Point</string>
 				<key>value</key>
 				<array>
-					<real>0.5</real>
-					<real>0.5</real>
+					<real>0.69999998807907104</real>
+					<real>0.10000000149011612</real>
 				</array>
 			</dict>
 			<dict>
@@ -120,6 +120,8 @@
 				</array>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -179,7 +181,7 @@
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>88.797752380371094</real>
+			<real>32</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

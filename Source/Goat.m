@@ -30,7 +30,7 @@ static BOOL enabled = false;
 }
 
 - (void)startHeadShakeWithRandomDelay {
-    float delay = (arc4random() % 12000) / 1000.f;
+    float delay = (arc4random() % 9000) / 1000.f;
     [self performSelector:@selector(startHeadShake) withObject:nil afterDelay:delay];
 }
 
@@ -60,8 +60,6 @@ static BOOL enabled = false;
             previousPosition = self.position;
         else
             self.position = previousPosition;
-    
-        [self startHeadShakeWithRandomDelay];
     }
     
 }
@@ -70,7 +68,6 @@ static BOOL enabled = false;
 {
     if (enabled) {
     self.position = previousPosition;
-    [self startHeadShakeWithRandomDelay];
     }
 }
 

@@ -127,9 +127,9 @@ static Board *sharedBoard = nil;
     if(adjacentLatticePoint != nil && [self checkIfValidGoat:goat moveFrom:goat.parent To:adjacentLatticePoint])
     {
         goat.position = [self centerOfLatticePoint:adjacentLatticePoint];
+        goat.position = ccp(goat.position.x+6,goat.position.y-6);
         [goat removeFromParent];
         [adjacentLatticePoint addChild:goat];
-        
         
         CCActionFadeOut *fadeOut = [CCActionFadeOut actionWithDuration:0.5];
         [_turnGoat runAction:fadeOut];
@@ -140,6 +140,7 @@ static Board *sharedBoard = nil;
         [Tiger movement:true];
         
         goat.inBoard = true;
+        [goat startHeadShake];
         return true;
     }
     return false;
