@@ -21,13 +21,17 @@ static BOOL enabled = false;
     self.inBoard = false;
     self.isAlive = true;
     self.userInteractionEnabled = TRUE;
-    float delay = (arc4random() % 12000) / 1000.f;
-    [self performSelector:@selector(startHeadShake) withObject:nil afterDelay:delay];
-}
+    [self startHeadShakeWithRandomDelay];
+    }
 
 - (void)startHeadShake {
     CCAnimationManager* animationManager = self.userObject;
     [animationManager runAnimationsForSequenceNamed:@"HeadShake"];
+}
+
+- (void)startHeadShakeWithRandomDelay {
+    float delay = (arc4random() % 12000) / 1000.f;
+    [self performSelector:@selector(startHeadShake) withObject:nil afterDelay:delay];
 }
 
 + (void)movement:(BOOL) enable {
@@ -56,13 +60,17 @@ static BOOL enabled = false;
             previousPosition = self.position;
         else
             self.position = previousPosition;
+    
+        [self startHeadShakeWithRandomDelay];
     }
+    
 }
 
 - (void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
 {
     if (enabled) {
     self.position = previousPosition;
+    [self startHeadShakeWithRandomDelay];
     }
 }
 

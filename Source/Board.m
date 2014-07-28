@@ -53,6 +53,7 @@
     CCSprite* _turnGoat;
     CCSprite* _turnTiger;
     CCLabelTTF* _goatsAlive;
+    CCSprite* _goatsAliveSprite;
     NSArray* lattices;
     NSArray* line1;
     NSArray* line2;
@@ -105,9 +106,11 @@ static Board *sharedBoard = nil;
         tiger.position = [self centerOfLatticePoint:adjacentLatticePoint];
         [tiger removeFromParent];
         [adjacentLatticePoint addChild:tiger];
-    
-        _turnTiger.visible = false;
-        _turnGoat.visible = true;
+        
+        CCActionFadeOut *fadeOut = [CCActionFadeOut actionWithDuration:0.5];
+        [_turnTiger runAction:fadeOut];
+        CCActionFadeIn *fadeIn = [CCActionFadeIn actionWithDuration:0.5];
+        [_turnGoat runAction:fadeIn];
         
         [Tiger movement:false];
         [Goat movement:true];
@@ -127,8 +130,11 @@ static Board *sharedBoard = nil;
         [goat removeFromParent];
         [adjacentLatticePoint addChild:goat];
         
-        _turnGoat.visible = false;
-        _turnTiger.visible = true;
+        
+        CCActionFadeOut *fadeOut = [CCActionFadeOut actionWithDuration:0.5];
+        [_turnGoat runAction:fadeOut];
+        CCActionFadeIn *fadeIn = [CCActionFadeIn actionWithDuration:0.5];
+        [_turnTiger runAction:fadeIn];
         
         [Goat movement:false];
         [Tiger movement:true];
@@ -197,6 +203,14 @@ static Board *sharedBoard = nil;
     [goat removeFromParent];
     goat.isAlive = false;
     [_goatsAlive setString:[NSString stringWithFormat:@"%i", [self numberOfGoatsAlive]]];
+    CCActionJumpBy *jumpAction = [CCActionJumpBy actionWithDuration:1.0f position:ccp(0,0) height:0.025f jumps:1];
+    [_goatsAlive runAction:jumpAction];
+    
+    CCColor *originalColor = _goatsAlive.color;
+    CCActionTintTo *tintAction = [CCActionTintTo actionWithDuration:0.5f color:[CCColor redColor]];
+    CCActionTintTo *tintReverseAction = [CCActionTintTo actionWithDuration:0.5f color:originalColor];
+    CCActionSequence *redAlertAction = [CCActionSequence actions:tintAction,tintReverseAction,nil];
+    [_goatsAlive runAction:redAlertAction];
 }
 
 - (BOOL) checkIfValidGoat:(Goat *)goat moveFrom:(CCNode *)sourceLatticePoint To:(CCNode *)destinationLatticePoint {
@@ -244,8 +258,6 @@ static Board *sharedBoard = nil;
 }
 
 - (void) startGame {
-    _turnGoat.visible = true;
-    _turnTiger.visible = false;
     [Goat movement:true];
     [Tiger movement:false];
 }
