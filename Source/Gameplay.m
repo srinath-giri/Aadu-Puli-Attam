@@ -27,10 +27,4 @@
     [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
 }
 
-- (void) back {
-    // Main Menu
-    [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"MainScene"]];
-}
-
-
 @end
