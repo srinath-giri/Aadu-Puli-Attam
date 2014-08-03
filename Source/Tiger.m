@@ -27,7 +27,7 @@ static BOOL enabled = false;
 
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-
+    [[Board sharedBoard] overlayTigerSprite:true on:self];
 }
 
 - (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
@@ -36,6 +36,7 @@ static BOOL enabled = false;
     CGPoint touchLocation = [touch locationInNode:self.parent];
     self.position = touchLocation;
     //CCLOG(@"ccp:%f %f",self.position.x,self.position.y);
+    [[Board sharedBoard] overlayTigerSprite:true on:self];
     }
 }
 
@@ -46,6 +47,7 @@ static BOOL enabled = false;
         previousPosition = self.position;
     else
         self.position = previousPosition;
+    [[Board sharedBoard] overlayTigerSprite:false on:self];
     }
 }
 
@@ -53,6 +55,7 @@ static BOOL enabled = false;
 {
     if (enabled) {
     self.position = previousPosition;
+    [[Board sharedBoard] overlayTigerSprite:false on:self];
     }
 }
 

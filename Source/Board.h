@@ -20,6 +20,7 @@
 - (BOOL) checkIfAllGoatsAreInBoard;
 - (void) eatGoat:(Goat *) goat;
 - (NSUInteger) numberOfGoatsAlive;
+- (void) overlayTigerSprite:(BOOL)visible on:(Tiger*) tiger;
 - (CCNode *)getAdjacentLatticePoint:(CCNode *)sprite;
 - (CGPoint) centerOfLatticePoint:(CCNode*) latticePoint;
 - (void) startGame;

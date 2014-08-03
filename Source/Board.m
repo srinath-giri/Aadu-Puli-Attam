@@ -54,6 +54,7 @@
     CCSprite* _turnTiger;
     CCLabelTTF* _goatsAlive;
     CCSprite* _goatsAliveSprite;
+    CCSprite* _overlayTiger;
     NSArray* lattices;
     NSArray* line1;
     NSArray* line2;
@@ -261,6 +262,13 @@ static Board *sharedBoard = nil;
 
 - (CGPoint) centerOfLatticePoint:(CCNode*) latticePoint {
     return ccp([latticePoint boundingBox].size.width / 2, [latticePoint boundingBox].size.height / 2);
+}
+
+- (void)overlayTigerSprite:(BOOL) visible on:(Tiger*) tiger{
+    CGPoint tigerposition = [tiger.parent convertToWorldSpace:tiger.position];
+    CGPoint overlaytigerposition = [_overlayTiger.parent convertToNodeSpace:tigerposition];
+    _overlayTiger.position = ccp(overlaytigerposition.x,overlaytigerposition.y);
+    _overlayTiger.visible = visible;
 }
 
 - (void) startGame {
