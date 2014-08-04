@@ -45,7 +45,10 @@ static BOOL enabled = false;
 
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    
+    if (enabled) {
+    [self setVisible:false];
+    [[Board sharedBoard] overlayGoatSprite:true on:self];
+    }
 }
 
 - (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
@@ -54,6 +57,7 @@ static BOOL enabled = false;
     CGPoint touchLocation = [touch locationInNode:self.parent];
     self.position = touchLocation;
     //CCLOG(@"touchMoved:%f %f",self.position.x,self.position.y);
+    [[Board sharedBoard] overlayGoatSprite:true on:self];    
     }
 }
 
@@ -65,6 +69,8 @@ static BOOL enabled = false;
             previousPosition = self.position;
         else
             self.position = previousPosition;
+        [[Board sharedBoard] overlayGoatSprite:false on:self];
+        [self setVisible:true];
     }
     
 }
@@ -73,6 +79,8 @@ static BOOL enabled = false;
 {
     if (enabled) {
     self.position = previousPosition;
+    [[Board sharedBoard] overlayGoatSprite:false on:self];
+    [self setVisible:true];
     }
 }
 

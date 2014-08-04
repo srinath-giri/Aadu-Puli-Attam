@@ -27,7 +27,10 @@ static BOOL enabled = false;
 
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    if (enabled) {
+    [[Board sharedBoard] glowTigers:false];
     [[Board sharedBoard] overlayTigerSprite:true on:self];
+    }
 }
 
 - (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event

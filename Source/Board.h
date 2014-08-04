@@ -21,8 +21,11 @@
 - (void) eatGoat:(Goat *) goat;
 - (NSUInteger) numberOfGoatsAlive;
 - (void) overlayTigerSprite:(BOOL)visible on:(Tiger*) tiger;
+- (void) overlayGoatSprite:(BOOL)visible on:(Goat*) goat;
 - (CCNode *)getAdjacentLatticePoint:(CCNode *)sprite;
 - (CGPoint) centerOfLatticePoint:(CCNode*) latticePoint;
 - (void) startGame;
+- (void) glowTigers:(BOOL) on;
+
 
 @end

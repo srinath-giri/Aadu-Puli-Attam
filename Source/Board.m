@@ -55,6 +55,7 @@
     CCLabelTTF* _goatsAlive;
     CCSprite* _goatsAliveSprite;
     CCSprite* _overlayTiger;
+    CCSprite* _overlayGoat;
     NSArray* lattices;
     NSArray* line1;
     NSArray* line2;
@@ -144,6 +145,7 @@ static Board *sharedBoard = nil;
         
         [Goat movement:false];
         [Tiger movement:true];
+        [self glowTigers:true];
         
         goat.inBoard = true;
         [goat startHeadShakeWithRandomDelay];
@@ -264,16 +266,43 @@ static Board *sharedBoard = nil;
     return ccp([latticePoint boundingBox].size.width / 2, [latticePoint boundingBox].size.height / 2);
 }
 
-- (void)overlayTigerSprite:(BOOL) visible on:(Tiger*) tiger{
+- (void) overlayTigerSprite:(BOOL)visible on:(Tiger*)tiger{
     CGPoint tigerposition = [tiger.parent convertToWorldSpace:tiger.position];
     CGPoint overlaytigerposition = [_overlayTiger.parent convertToNodeSpace:tigerposition];
     _overlayTiger.position = ccp(overlaytigerposition.x,overlaytigerposition.y);
     _overlayTiger.visible = visible;
 }
 
+- (void) overlayGoatSprite:(BOOL)visible on:(Goat*)goat{
+    CGPoint goatposition = [goat.parent convertToWorldSpace:goat.position];
+    CGPoint overlaygoatposition = [_overlayGoat.parent convertToNodeSpace:goatposition];
+    _overlayGoat.position = ccp(overlaygoatposition.x,overlaygoatposition.y);
+    _overlayGoat.visible = visible;
+}
+
 - (void) startGame {
     [Goat movement:true];
     [Tiger movement:false];
+}
+
+- (void) glowTigers:(BOOL) on {
+    if(on) {
+        CCActionScaleTo *scaleUp  = [CCActionScaleTo actionWithDuration:1.0 scale:1.3];
+        CCActionScaleTo *scaleDown  = [CCActionScaleTo actionWithDuration:1.0 scale:1.0];
+        CCActionSequence *scaleUpDown = [CCActionSequence actions:scaleUp,scaleDown,nil];
+        CCActionRepeatForever *scaleUpDownForever = [CCActionRepeatForever actionWithAction:scaleUpDown];
+        [_tiger1 runAction:[scaleUpDownForever copy]];
+        [_tiger2 runAction:[scaleUpDownForever copy]];
+        [_tiger3 runAction:[scaleUpDownForever copy]];
+    }
+    else {
+        [_tiger1 stopAllActions];
+        [_tiger2 stopAllActions];
+        [_tiger3 stopAllActions];
+        [_tiger1 setScale:1.0];
+        [_tiger2 setScale:1.0];
+        [_tiger3 setScale:1.0];
+    }
 }
 
 @end
