@@ -46,6 +46,7 @@ static BOOL enabled = false;
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     if (enabled) {
+    [[Board sharedBoard] glowGoats:false];
     [self setVisible:false];
     [[Board sharedBoard] overlayGoatSprite:true on:self];
     }

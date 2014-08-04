@@ -116,6 +116,7 @@ static Board *sharedBoard = nil;
         
         [Tiger movement:false];
         [Goat movement:true];
+        [self glowGoats:true];
         
         return true;
     }
@@ -283,6 +284,7 @@ static Board *sharedBoard = nil;
 - (void) startGame {
     [Goat movement:true];
     [Tiger movement:false];
+    [self glowGoats:true];
 }
 
 - (void) glowTigers:(BOOL) on {
@@ -302,6 +304,34 @@ static Board *sharedBoard = nil;
         [_tiger1 setScale:1.0];
         [_tiger2 setScale:1.0];
         [_tiger3 setScale:1.0];
+    }
+}
+
+- (void) glowGoats:(BOOL) on {
+    if(on) {
+        CCActionScaleTo *scaleUp  = [CCActionScaleTo actionWithDuration:1.0 scale:1.2];
+        CCActionScaleTo *scaleDown  = [CCActionScaleTo actionWithDuration:1.0 scale:1.0];
+        CCActionSequence *scaleUpDown = [CCActionSequence actions:scaleUp,scaleDown,nil];
+        CCActionRepeatForever *scaleUpDownForever = [CCActionRepeatForever actionWithAction:scaleUpDown];
+        
+        if([self checkIfAllGoatsAreInBoard]) {
+            for (Goat* goat in goats) {
+                [goat runAction:[scaleUpDownForever copy]];
+            }
+        }
+        else {
+            for (Goat* goat in goats) {
+                if(goat.inBoard == false) {
+                [goat runAction:[scaleUpDownForever copy]];
+                }
+            }
+        }
+    }
+    else {
+        for (Goat* goat in goats) {
+        [goat stopAllActions];
+        [goat setScale:1.0];
+        }
     }
 }
 

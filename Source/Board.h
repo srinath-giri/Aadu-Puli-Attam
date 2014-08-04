@@ -26,6 +26,7 @@
 - (CGPoint) centerOfLatticePoint:(CCNode*) latticePoint;
 - (void) startGame;
 - (void) glowTigers:(BOOL) on;
+- (void) glowGoats:(BOOL) on;
 
 
 @end
