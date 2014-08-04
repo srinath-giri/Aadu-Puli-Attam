@@ -130,10 +130,10 @@ static Board *sharedBoard = nil;
     if(adjacentLatticePoint != nil && [self checkIfValidGoat:goat moveFrom:goat.parent To:adjacentLatticePoint])
     {
         goat.position = [self centerOfLatticePoint:adjacentLatticePoint];
-        goat.position = ccp(goat.position.x+6,goat.position.y-6);
+        goat.position = ccp(goat.position.x+6,goat.position.y-10);
         
         [goat pauseHeadShake];
-        CCActionRotateTo *resetRotation = [CCActionRotateTo actionWithDuration:0.25 angle:0.0f];
+        CCActionRotateTo *resetRotation = [CCActionRotateTo actionWithDuration:0.125 angle:0.0f];
         [goat runAction:resetRotation];
         
         [goat removeFromParent];
