@@ -23,10 +23,11 @@
 - (void) overlayTigerSprite:(BOOL)visible on:(Tiger*) tiger;
 - (void) overlayGoatSprite:(BOOL)visible on:(Goat*) goat;
 - (CCNode *)getAdjacentLatticePoint:(CCNode *)sprite;
-- (CGPoint) centerOfLatticePoint:(CCNode*) latticePoint;
+- (CGPoint) centerOfLatticePoint:(CCNode*)latticePoint;
 - (void) startGame;
-- (void) glowTigers:(BOOL) on;
-- (void) glowGoats:(BOOL) on;
-
+- (void) glowTigers:(BOOL)on;
+- (void) glowGoats:(BOOL)on;
+- (void) glowLattices:(BOOL)on forTiger:(Tiger*)tiger;
+- (void) glowLattices:(BOOL)on forGoat:(Goat*)goat;
 
 @end

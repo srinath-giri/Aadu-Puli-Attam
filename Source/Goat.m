@@ -49,6 +49,7 @@ static BOOL enabled = false;
     [[Board sharedBoard] glowGoats:false];
     [self setVisible:false];
     [[Board sharedBoard] overlayGoatSprite:true on:self];
+    [[Board sharedBoard] glowLattices:true forGoat:self];
     }
 }
 
@@ -70,6 +71,7 @@ static BOOL enabled = false;
             previousPosition = self.position;
         else
             self.position = previousPosition;
+        [[Board sharedBoard] glowLattices:false forGoat:self];
         [[Board sharedBoard] overlayGoatSprite:false on:self];
         [self setVisible:true];
     }
@@ -80,6 +82,7 @@ static BOOL enabled = false;
 {
     if (enabled) {
     self.position = previousPosition;
+    [[Board sharedBoard] glowLattices:false forGoat:self];    
     [[Board sharedBoard] overlayGoatSprite:false on:self];
     [self setVisible:true];
     }
