@@ -13,11 +13,14 @@
     BOOL menuShown;
     CCButton *_menuButton;
     CCButton *_replayButton;
+    CCButton *_gameObjectiveCloseButton;
+    CCNode* _gameObjective;
 }
 
 - (void) didLoadFromCCB {
     menuShown = false;
-    [self start];
+    _gameObjective.visible = true;
+    _gameObjectiveCloseButton.visible = true;
     self.userInteractionEnabled = TRUE;
 }
 
@@ -43,6 +46,12 @@
 - (void) replay {
     // reload gameplay
     [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
+}
+
+- (void) closeObjective {
+    _gameObjective.visible = false;
+    _gameObjectiveCloseButton.visible = false;
+    [self start];
 }
 
 @end

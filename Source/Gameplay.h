@@ -13,5 +13,6 @@
 @interface Gameplay : CCNode
 
 - (void) start;
+- (void) closeObjective;
 
 @end
