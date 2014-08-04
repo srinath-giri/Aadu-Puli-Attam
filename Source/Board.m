@@ -103,7 +103,7 @@ static Board *sharedBoard = nil;
     
     CCNode* adjacentLatticePoint = [self getAdjacentLatticePoint:tiger];
     
-    if(adjacentLatticePoint != nil && [self checkIfValidTiger:tiger moveFrom:tiger.parent To:adjacentLatticePoint])
+    if(adjacentLatticePoint != nil && [self checkIfValidTiger:tiger moveFrom:tiger.parent To:adjacentLatticePoint andEatGoat:true])
     {        
         tiger.position = [self centerOfLatticePoint:adjacentLatticePoint];
         [tiger removeFromParent];
@@ -173,7 +173,7 @@ static Board *sharedBoard = nil;
     return nil;
 }
 
-- (BOOL) checkIfValidTiger:(Tiger *)tiger moveFrom:(CCNode*) sourceLatticePoint To:(CCNode*) destinationLatticePoint {
+- (BOOL) checkIfValidTiger:(Tiger *)tiger moveFrom:(CCNode*) sourceLatticePoint To:(CCNode*) destinationLatticePoint andEatGoat:(BOOL) eatGoat {
 
     for (NSArray* line in lines) {
         NSUInteger srcidx = [line indexOfObject:sourceLatticePoint];
@@ -192,11 +192,13 @@ static Board *sharedBoard = nil;
                 if([destinationLatticePoint.children count] == 1) {
                     // Check if inbetween lattice point contains a goat
                     CCNode* inBetweenLatticePoint = [line objectAtIndex:((srcidx+dstidx)/2)];
-                    CCSprite *spriteInBetween = [inBetweenLatticePoint.children objectAtIndex:0];
-                    if ([spriteInBetween class] == [Goat class])
-                    {
-                        [self eatGoat:(Goat*)spriteInBetween];
-                        return true;
+                    if([inBetweenLatticePoint.children count] == 2) {
+                        CCSprite *spriteInBetween = [inBetweenLatticePoint.children objectAtIndex:1];
+                        if ([spriteInBetween class] == [Goat class])
+                        {
+                            if(eatGoat)[self eatGoat:(Goat*)spriteInBetween];
+                            return true;
+                        }
                     }
                 }
             }
@@ -335,11 +337,31 @@ static Board *sharedBoard = nil;
     }
 }
 
+- (void) glowLattices:(BOOL)on forTiger:(Tiger*)tiger {
+    if(on) {
+        CCActionRotateBy *rotate90  = [CCActionRotateBy actionWithDuration:0.125 angle:90.0];
+        CCActionRepeatForever *spinForever = [CCActionRepeatForever actionWithAction:rotate90];
+        for (CCNode* latticePoint in lattices) {
+            if ([self checkIfValidTiger:tiger moveFrom:tiger.parent To:latticePoint andEatGoat:false]) {
+                CCSprite *spinner = latticePoint.children[0];
+                [spinner setOpacity:1.0];
+                [spinner runAction:[spinForever copy]];
+            }
+        }
+    }
+    else {
+        for (CCNode* latticePoint in lattices) {
+            CCSprite *spinner = latticePoint.children[0];
+            [spinner stopAllActions];
+            [spinner setOpacity:0.0];
+        }
+    }
+}
+
 - (void) glowLattices:(BOOL)on forGoat:(Goat*)goat {
     if(on) {
         CCActionRotateBy *rotate90  = [CCActionRotateBy actionWithDuration:0.125 angle:90.0];
         CCActionRepeatForever *spinForever = [CCActionRepeatForever actionWithAction:rotate90];
-    
         for (CCNode* latticePoint in lattices) {
             if ([self checkIfValidGoat:goat moveFrom:goat.parent To:latticePoint]) {
                 CCSprite *spinner = latticePoint.children[0];

@@ -30,6 +30,7 @@ static BOOL enabled = false;
     if (enabled) {
     [[Board sharedBoard] glowTigers:false];
     [[Board sharedBoard] overlayTigerSprite:true on:self];
+    [[Board sharedBoard] glowLattices:true forTiger:self];
     }
 }
 
@@ -50,6 +51,7 @@ static BOOL enabled = false;
         previousPosition = self.position;
     else
         self.position = previousPosition;
+    [[Board sharedBoard] glowLattices:false forTiger:self];
     [[Board sharedBoard] overlayTigerSprite:false on:self];
     }
 }
@@ -58,6 +60,7 @@ static BOOL enabled = false;
 {
     if (enabled) {
     self.position = previousPosition;
+    [[Board sharedBoard] glowLattices:false forTiger:self];
     [[Board sharedBoard] overlayTigerSprite:false on:self];
     }
 }
