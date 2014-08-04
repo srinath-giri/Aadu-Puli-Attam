@@ -291,8 +291,8 @@ static Board *sharedBoard = nil;
 
 - (void) glowTigers:(BOOL) on {
     if(on) {
-        CCActionScaleTo *scaleUp  = [CCActionScaleTo actionWithDuration:1.0 scale:1.3];
-        CCActionScaleTo *scaleDown  = [CCActionScaleTo actionWithDuration:1.0 scale:1.0];
+        CCActionScaleTo *scaleUp  = [CCActionScaleTo actionWithDuration:0.6 scale:1.3];
+        CCActionScaleTo *scaleDown  = [CCActionScaleTo actionWithDuration:0.6 scale:1.0];
         CCActionSequence *scaleUpDown = [CCActionSequence actions:scaleUp,scaleDown,nil];
         CCActionRepeatForever *scaleUpDownForever = [CCActionRepeatForever actionWithAction:scaleUpDown];
         [_tiger1 runAction:[scaleUpDownForever copy]];
@@ -311,8 +311,8 @@ static Board *sharedBoard = nil;
 
 - (void) glowGoats:(BOOL) on {
     if(on) {
-        CCActionScaleTo *scaleUp  = [CCActionScaleTo actionWithDuration:1.0 scale:1.2];
-        CCActionScaleTo *scaleDown  = [CCActionScaleTo actionWithDuration:1.0 scale:1.0];
+        CCActionScaleTo *scaleUp  = [CCActionScaleTo actionWithDuration:0.6 scale:1.2];
+        CCActionScaleTo *scaleDown  = [CCActionScaleTo actionWithDuration:0.6 scale:1.0];
         CCActionSequence *scaleUpDown = [CCActionSequence actions:scaleUp,scaleDown,nil];
         CCActionRepeatForever *scaleUpDownForever = [CCActionRepeatForever actionWithAction:scaleUpDown];
         

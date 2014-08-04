@@ -41,6 +41,12 @@ Sample Text</string>
 			<key>translations</key>
 			<dict/>
 		</dict>
+		<dict>
+			<key>key</key>
+			<string>&lt;</string>
+			<key>translations</key>
+			<dict/>
+		</dict>
 	</array>
 </dict>
 </plist>
