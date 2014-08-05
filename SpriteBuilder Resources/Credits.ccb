@@ -73,7 +73,7 @@
 						<array>
 							<real>0.5</real>
 							<real>0.5</real>
-							<integer>1</integer>
+							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
 						</array>
@@ -109,7 +109,14 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>Sample Text</string>
+							<string>Tiger Icon:
+URL: commons.wikimedia.org/wiki/File:Tiger_Icon.svg
+
+Board Image:
+URL: commons.wikimedia.org/wiki/File:Adu-puli-kattam.png
+
+Other Art Assets:
+URL: www.makegameswith.us/academy/art</string>
 							<false/>
 						</array>
 					</dict>
@@ -119,7 +126,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Verdana-Bold</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -142,6 +149,19 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>0.9416847825050354</real>
+							<real>0.32955655455589294</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>dimensions</string>
 						<key>type</key>
 						<string>Size</string>
@@ -159,7 +179,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
