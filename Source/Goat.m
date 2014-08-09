@@ -10,12 +10,12 @@
 #import "Board.h"
 
 @implementation Goat {
-    CGPoint previousPosition;
+
 }
 
 - (void)onEnter {
     [super onEnter];
-    previousPosition = self.position;
+    self.previousPosition = self.position;
     self.inBoard = false;
     self.isAlive = true;
     self.isMovable = false;
@@ -67,9 +67,9 @@
     if (self.isMovable) {
         //CCLOG(@"touchEnded:%f %f",self.position.x,self.position.y);
         if([[Board sharedBoard] moveGoat:self])
-            previousPosition = self.position;
+            self.previousPosition = self.position;
         else
-            self.position = previousPosition;
+            self.position = self.previousPosition;
         [[Board sharedBoard] glowLattices:false forGoat:self];
         [[Board sharedBoard] overlayGoatSprite:false on:self];
         [self setVisible:true];
@@ -80,7 +80,7 @@
 - (void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
 {
     if (self.isMovable) {
-    self.position = previousPosition;
+    self.position = self.previousPosition;
     [[Board sharedBoard] glowGoats:true];
     [[Board sharedBoard] glowLattices:false forGoat:self];    
     [[Board sharedBoard] overlayGoatSprite:false on:self];

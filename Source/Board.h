@@ -29,5 +29,6 @@
 - (void) glowGoats:(BOOL)on;
 - (void) glowLattices:(BOOL)on forTiger:(Tiger*)tiger;
 - (void) glowLattices:(BOOL)on forGoat:(Goat*)goat;
+- (void) showArrow:(BOOL)enable forGoat:(Goat*) goat;
 
 @end

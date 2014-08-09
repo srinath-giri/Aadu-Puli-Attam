@@ -13,6 +13,7 @@
 @property (nonatomic, assign) BOOL inBoard;
 @property (nonatomic, assign) BOOL isAlive;
 @property (nonatomic, assign) BOOL isMovable;
+@property (nonatomic, assign) CGPoint previousPosition;
 
 - (void)move:(BOOL)enable;
 - (void)startHeadShake;

@@ -56,6 +56,7 @@
     CCSprite* _goatsAliveSprite;
     CCSprite* _overlayTiger;
     CCSprite* _overlayGoat;
+    CCSprite* _arrow;
     NSArray* lattices;
     NSArray* line1;
     NSArray* line2;
@@ -334,6 +335,7 @@ static Board *sharedBoard = nil;
             for (Goat* goat in goats) {
                 if(goat.inBoard == false) {
                     [goat runAction:[scaleUpDownForever copy]];
+                    [self showArrow:true forGoat:goat];
                     break;
                 }
             }
@@ -344,7 +346,27 @@ static Board *sharedBoard = nil;
         [goat stopAllActions];
         [goat setScale:1.0];
         }
+        [self showArrow:false forGoat:nil];
     }
+}
+
+- (void) showArrow:(BOOL)enable forGoat:(Goat*) goat{
+    
+    CCActionMoveBy *moveByPlus  = [CCActionMoveBy actionWithDuration:0.25 position:ccp(6,0)];
+    CCActionMoveBy *moveByMinus  = [CCActionMoveBy actionWithDuration:0.25 position:ccp(-6,0)];
+    CCActionSequence *movePlusMinus = [CCActionSequence actions:moveByPlus,moveByMinus,nil];
+    CCActionRepeatForever *movePlusMinusForever = [CCActionRepeatForever actionWithAction:movePlusMinus];
+
+    if(enable) {
+         [_arrow setOpacity:1.0];
+        _arrow.position = ccp(goat.previousPosition.x-40,goat.previousPosition.y+10);
+         [_arrow runAction:[movePlusMinusForever copy]];
+    }
+    else {
+        [_arrow stopAllActions];
+        [_arrow setOpacity:0.0];
+    }
+    
 }
 
 - (void) movementGoats:(BOOL) enable {
