@@ -138,7 +138,7 @@ static Board *sharedBoard = nil;
     if(adjacentLatticePoint != nil && [self checkIfValidGoat:goat moveFrom:goat.parent To:adjacentLatticePoint])
     {
         CGPoint centerOfLattice = [self centerOfLatticePoint:adjacentLatticePoint];
-        goat.position = ccp(centerOfLattice.x+6,centerOfLattice.y-10);
+        goat.position = ccp(centerOfLattice.x,centerOfLattice.y);
         
         [goat pauseHeadShake];
         CCActionRotateTo *resetRotation = [CCActionRotateTo actionWithDuration:0.125 angle:0.0f];
@@ -220,7 +220,7 @@ static Board *sharedBoard = nil;
 - (void) eatGoat:(Goat *) goat {
     CCParticleSystem *explosion = (CCParticleSystem *)[CCBReader load:@"GoatExplosion"];
     explosion.autoRemoveOnFinish = TRUE;
-    explosion.position = ccp(goat.position.x-6,goat.position.y+10);
+    explosion.position = ccp(goat.position.x,goat.position.y);
     [goat.parent addChild:explosion];
     [goat removeFromParent];
     goat.isAlive = false;
@@ -359,7 +359,7 @@ static Board *sharedBoard = nil;
 
     if(enable) {
          [_arrow setOpacity:1.0];
-        _arrow.position = ccp(goat.previousPosition.x-40,goat.previousPosition.y+10);
+        _arrow.position = ccp(goat.previousPosition.x-30,goat.previousPosition.y);
          [_arrow runAction:[movePlusMinusForever copy]];
     }
     else {
