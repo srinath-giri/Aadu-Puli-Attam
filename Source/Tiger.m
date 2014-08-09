@@ -60,6 +60,7 @@ static BOOL enabled = false;
 {
     if (enabled) {
     self.position = previousPosition;
+    [[Board sharedBoard] glowTigers:true];
     [[Board sharedBoard] glowLattices:false forTiger:self];
     [[Board sharedBoard] overlayTigerSprite:false on:self];
     }

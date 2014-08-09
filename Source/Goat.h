@@ -12,8 +12,9 @@
 
 @property (nonatomic, assign) BOOL inBoard;
 @property (nonatomic, assign) BOOL isAlive;
+@property (nonatomic, assign) BOOL isMovable;
 
-+ (void)movement:(BOOL) enable;
+- (void)move:(BOOL)enable;
 - (void)startHeadShake;
 - (void)startHeadShakeWithRandomDelay;
 - (void)pauseHeadShake;

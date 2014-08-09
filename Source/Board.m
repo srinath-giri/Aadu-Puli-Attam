@@ -120,12 +120,13 @@ static Board *sharedBoard = nil;
             [_turnGoat runAction:fadeIn];
         
             [Tiger movement:false];
-            [Goat movement:true];
+            [self movementGoats:true];
+            [self glowTigers:false];
             [self glowGoats:true];
-
             return true;
         }
     }
+    [self glowTigers:true];
     return false;
 }
 
@@ -149,15 +150,16 @@ static Board *sharedBoard = nil;
         [_turnGoat runAction:fadeOut];
         CCActionFadeIn *fadeIn = [CCActionFadeIn actionWithDuration:0.5];
         [_turnTiger runAction:fadeIn];
-        
-        [Goat movement:false];
+
+        [self movementGoats:false];
         [Tiger movement:true];
+        [self glowGoats:false];
         [self glowTigers:true];
-        
         goat.inBoard = true;
-        [goat startHeadShakeWithRandomDelay];
+
         return true;
     }
+    [self glowGoats:true];
     return false;
 }
 
@@ -291,7 +293,7 @@ static Board *sharedBoard = nil;
 }
 
 - (void) startGame {
-    [Goat movement:true];
+    [self movementGoats:true];
     [Tiger movement:false];
     [self glowGoats:true];
 }
@@ -331,7 +333,8 @@ static Board *sharedBoard = nil;
         else {
             for (Goat* goat in goats) {
                 if(goat.inBoard == false) {
-                [goat runAction:[scaleUpDownForever copy]];
+                    [goat runAction:[scaleUpDownForever copy]];
+                    break;
                 }
             }
         }
@@ -340,6 +343,30 @@ static Board *sharedBoard = nil;
         for (Goat* goat in goats) {
         [goat stopAllActions];
         [goat setScale:1.0];
+        }
+    }
+}
+
+- (void) movementGoats:(BOOL) enable {
+    if(enable)
+    {
+        if([self checkIfAllGoatsAreInBoard]) {
+            for (Goat* goat in goats) {
+                [goat move:true];
+            }
+        }
+        else {
+            for (Goat* goat in goats) {
+                if(goat.inBoard == false) {
+                    [goat move:true];
+                    break;
+                }
+            }
+        }
+    }
+    else {
+        for (Goat* goat in goats) {
+            [goat move:false];
         }
     }
 }
@@ -397,7 +424,6 @@ static Board *sharedBoard = nil;
         }
     }
 }
-
 
 
 @end

@@ -9,8 +9,6 @@
 #import "Goat.h"
 #import "Board.h"
 
-static BOOL enabled = false;
-
 @implementation Goat {
     CGPoint previousPosition;
 }
@@ -20,6 +18,7 @@ static BOOL enabled = false;
     previousPosition = self.position;
     self.inBoard = false;
     self.isAlive = true;
+    self.isMovable = false;
     self.userInteractionEnabled = TRUE;
     [self startHeadShakeWithRandomDelay];
     }
@@ -39,15 +38,15 @@ static BOOL enabled = false;
     [animationManager setPaused:YES];
 }
 
-+ (void)movement:(BOOL) enable {
-    enabled = enable;
+- (void)move:(BOOL)enable {
+    self.isMovable = enable;
 }
 
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    if (enabled) {
-    [[Board sharedBoard] glowGoats:false];
+    if (self.isMovable) {
     [self setVisible:false];
+    [[Board sharedBoard] glowGoats:false];
     [[Board sharedBoard] overlayGoatSprite:true on:self];
     [[Board sharedBoard] glowLattices:true forGoat:self];
     }
@@ -55,7 +54,7 @@ static BOOL enabled = false;
 
 - (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    if (enabled) {
+    if (self.isMovable) {
     CGPoint touchLocation = [touch locationInNode:self.parent];
     self.position = touchLocation;
     //CCLOG(@"touchMoved:%f %f",self.position.x,self.position.y);
@@ -65,7 +64,7 @@ static BOOL enabled = false;
 
 - (void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    if (enabled) {
+    if (self.isMovable) {
         //CCLOG(@"touchEnded:%f %f",self.position.x,self.position.y);
         if([[Board sharedBoard] moveGoat:self])
             previousPosition = self.position;
@@ -80,8 +79,9 @@ static BOOL enabled = false;
 
 - (void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    if (enabled) {
+    if (self.isMovable) {
     self.position = previousPosition;
+    [[Board sharedBoard] glowGoats:true];
     [[Board sharedBoard] glowLattices:false forGoat:self];    
     [[Board sharedBoard] overlayGoatSprite:false on:self];
     [self setVisible:true];
