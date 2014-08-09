@@ -15,7 +15,7 @@
 + (Board*) sharedBoard;
 - (BOOL) moveTiger:(Tiger *) tiger;
 - (BOOL) moveGoat:(Goat *) goat;
-- (BOOL) checkIfValidTiger:(Tiger *)tiger moveFrom:(CCNode*) sourceLatticePoint To:(CCNode*) destinationLatticePoint andEatGoat:(BOOL) eatGoat;
+- (BOOL) checkIfValidTiger:(Tiger *)tiger moveFrom:(CCNode*) sourceLatticePoint To:(CCNode*) destinationLatticePoint andIsA:(BOOL*) jump over:(Goat**) goat;
 - (BOOL) checkIfValidGoat:(Goat *)goat moveFrom:(CCNode *)sourceLatticePoint To:(CCNode *)destinationLatticePoint;
 - (BOOL) checkIfAllGoatsAreInBoard;
 - (void) eatGoat:(Goat *) goat;

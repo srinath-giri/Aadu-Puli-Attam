@@ -103,22 +103,28 @@ static Board *sharedBoard = nil;
     
     CCNode* adjacentLatticePoint = [self getAdjacentLatticePoint:tiger];
     
-    if(adjacentLatticePoint != nil && [self checkIfValidTiger:tiger moveFrom:tiger.parent To:adjacentLatticePoint andEatGoat:true])
-    {        
-        tiger.position = [self centerOfLatticePoint:adjacentLatticePoint];
-        [tiger removeFromParent];
-        [adjacentLatticePoint addChild:tiger];
+    if(adjacentLatticePoint != nil)
+    {
+        BOOL jump = false;
+        Goat *goatInBetween = nil;
         
-        CCActionFadeOut *fadeOut = [CCActionFadeOut actionWithDuration:0.5];
-        [_turnTiger runAction:fadeOut];
-        CCActionFadeIn *fadeIn = [CCActionFadeIn actionWithDuration:0.5];
-        [_turnGoat runAction:fadeIn];
+        if([self checkIfValidTiger:tiger moveFrom:tiger.parent To:adjacentLatticePoint andIsA:&jump over:&goatInBetween]) {
+            tiger.position = [self centerOfLatticePoint:adjacentLatticePoint];
+            [tiger removeFromParent];
+            [adjacentLatticePoint addChild:tiger];
+            if(jump)[self eatGoat:goatInBetween];
         
-        [Tiger movement:false];
-        [Goat movement:true];
-        [self glowGoats:true];
+            CCActionFadeOut *fadeOut = [CCActionFadeOut actionWithDuration:0.5];
+            [_turnTiger runAction:fadeOut];
+            CCActionFadeIn *fadeIn = [CCActionFadeIn actionWithDuration:0.5];
+            [_turnGoat runAction:fadeIn];
         
-        return true;
+            [Tiger movement:false];
+            [Goat movement:true];
+            [self glowGoats:true];
+
+            return true;
+        }
     }
     return false;
 }
@@ -173,7 +179,7 @@ static Board *sharedBoard = nil;
     return nil;
 }
 
-- (BOOL) checkIfValidTiger:(Tiger *)tiger moveFrom:(CCNode*) sourceLatticePoint To:(CCNode*) destinationLatticePoint andEatGoat:(BOOL) eatGoat {
+- (BOOL) checkIfValidTiger:(Tiger *)tiger moveFrom:(CCNode*) sourceLatticePoint To:(CCNode*) destinationLatticePoint andIsA:(BOOL*) jump over:(Goat**) goat {
 
     for (NSArray* line in lines) {
         NSUInteger srcidx = [line indexOfObject:sourceLatticePoint];
@@ -196,7 +202,8 @@ static Board *sharedBoard = nil;
                         CCSprite *spriteInBetween = [inBetweenLatticePoint.children objectAtIndex:1];
                         if ([spriteInBetween class] == [Goat class])
                         {
-                            if(eatGoat)[self eatGoat:(Goat*)spriteInBetween];
+                            if(jump != nil) *jump = true;
+                            if(goat != nil) *goat = (Goat *)spriteInBetween;
                             return true;
                         }
                     }
@@ -342,9 +349,12 @@ static Board *sharedBoard = nil;
         CCActionRotateBy *rotate90  = [CCActionRotateBy actionWithDuration:0.125 angle:90.0];
         CCActionRepeatForever *spinForever = [CCActionRepeatForever actionWithAction:rotate90];
         for (CCNode* latticePoint in lattices) {
-            if ([self checkIfValidTiger:tiger moveFrom:tiger.parent To:latticePoint andEatGoat:false]) {
+            BOOL jump = false;
+            Goat *goatInBetween = nil;
+            if ([self checkIfValidTiger:tiger moveFrom:tiger.parent To:latticePoint andIsA:&jump over:&goatInBetween]) {
                 CCSprite *spinner = latticePoint.children[0];
                 [spinner setOpacity:1.0];
+                if (jump) [spinner setColor:[CCColor greenColor]];
                 [spinner runAction:[spinForever copy]];
             }
         }
@@ -353,6 +363,7 @@ static Board *sharedBoard = nil;
         for (CCNode* latticePoint in lattices) {
             CCSprite *spinner = latticePoint.children[0];
             [spinner stopAllActions];
+            [spinner setColor:[CCColor whiteColor]];
             [spinner setOpacity:0.0];
         }
     }
