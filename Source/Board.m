@@ -301,8 +301,8 @@ static Board *sharedBoard = nil;
 
 - (void) glowTigers:(BOOL) on {
     if(on) {
-        CCActionScaleTo *scaleUp  = [CCActionScaleTo actionWithDuration:0.6 scale:1.3];
-        CCActionScaleTo *scaleDown  = [CCActionScaleTo actionWithDuration:0.6 scale:1.0];
+        CCActionScaleTo *scaleUp  = [CCActionScaleTo actionWithDuration:0.3 scale:1.3];
+        CCActionScaleTo *scaleDown  = [CCActionScaleTo actionWithDuration:0.3 scale:1.0];
         CCActionSequence *scaleUpDown = [CCActionSequence actions:scaleUp,scaleDown,nil];
         CCActionRepeatForever *scaleUpDownForever = [CCActionRepeatForever actionWithAction:scaleUpDown];
         [_tiger1 runAction:[scaleUpDownForever copy]];
@@ -321,8 +321,8 @@ static Board *sharedBoard = nil;
 
 - (void) glowGoats:(BOOL) on {
     if(on) {
-        CCActionScaleTo *scaleUp  = [CCActionScaleTo actionWithDuration:0.6 scale:1.2];
-        CCActionScaleTo *scaleDown  = [CCActionScaleTo actionWithDuration:0.6 scale:1.0];
+        CCActionScaleTo *scaleUp  = [CCActionScaleTo actionWithDuration:0.3 scale:1.2];
+        CCActionScaleTo *scaleDown  = [CCActionScaleTo actionWithDuration:0.3 scale:1.0];
         CCActionSequence *scaleUpDown = [CCActionSequence actions:scaleUp,scaleDown,nil];
         CCActionRepeatForever *scaleUpDownForever = [CCActionRepeatForever actionWithAction:scaleUpDown];
         
@@ -352,8 +352,8 @@ static Board *sharedBoard = nil;
 
 - (void) showArrow:(BOOL)enable forGoat:(Goat*) goat{
     
-    CCActionMoveBy *moveByPlus  = [CCActionMoveBy actionWithDuration:0.25 position:ccp(6,0)];
-    CCActionMoveBy *moveByMinus  = [CCActionMoveBy actionWithDuration:0.25 position:ccp(-6,0)];
+    CCActionMoveBy *moveByPlus  = [CCActionMoveBy actionWithDuration:0.3 position:ccp(6,0)];
+    CCActionMoveBy *moveByMinus  = [CCActionMoveBy actionWithDuration:0.3 position:ccp(-6,0)];
     CCActionSequence *movePlusMinus = [CCActionSequence actions:moveByPlus,moveByMinus,nil];
     CCActionRepeatForever *movePlusMinusForever = [CCActionRepeatForever actionWithAction:movePlusMinus];
 
