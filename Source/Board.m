@@ -189,17 +189,17 @@ static Board *sharedBoard = nil;
             NSUInteger moveDistance = abs(srcidx - dstidx);
             // Check if move is to adjacent empty lattice point
             if (moveDistance == 1) {
-                if([destinationLatticePoint.children count] == 1)
+                if([destinationLatticePoint.children count] == 2)
                     return true;
             }
             // Check if move is a jump to next to next lattice point
             else if (moveDistance == 2) {
                 // Check if next to next lattice point is empty
-                if([destinationLatticePoint.children count] == 1) {
+                if([destinationLatticePoint.children count] == 2) {
                     // Check if inbetween lattice point contains a goat
                     CCNode* inBetweenLatticePoint = [line objectAtIndex:((srcidx+dstidx)/2)];
-                    if([inBetweenLatticePoint.children count] == 2) {
-                        CCSprite *spriteInBetween = [inBetweenLatticePoint.children objectAtIndex:1];
+                    if([inBetweenLatticePoint.children count] == 3) {
+                        CCSprite *spriteInBetween = [inBetweenLatticePoint.children lastObject];
                         if ([spriteInBetween class] == [Goat class])
                         {
                             if(jump != nil) *jump = true;
@@ -235,7 +235,7 @@ static Board *sharedBoard = nil;
 - (BOOL) checkIfValidGoat:(Goat *)goat moveFrom:(CCNode *)sourceLatticePoint To:(CCNode *)destinationLatticePoint {
 
     if(goat.inBoard == false) {
-        if([destinationLatticePoint.children count] == 1)
+        if([destinationLatticePoint.children count] == 2)
             return true;
     }
     // Check if all the goats have been placed in the board to allow any moves
@@ -248,7 +248,7 @@ static Board *sharedBoard = nil;
                 NSUInteger moveDistance = abs(srcidx - dstidx);
                 // Check if move is to an adjacent empty lattice point
                 if (moveDistance == 1) {
-                    if([destinationLatticePoint.children count] == 1)
+                    if([destinationLatticePoint.children count] == 2)
                         return true;
                 }
             }
@@ -353,8 +353,13 @@ static Board *sharedBoard = nil;
             Goat *goatInBetween = nil;
             if ([self checkIfValidTiger:tiger moveFrom:tiger.parent To:latticePoint andIsA:&jump over:&goatInBetween]) {
                 CCSprite *spinner = latticePoint.children[0];
+                CCLabelTTF *plusOne = latticePoint.children[1];
                 [spinner setOpacity:1.0];
-                if (jump) [spinner setColor:[CCColor greenColor]];
+                if (jump) {
+                    [spinner setColor:[CCColor greenColor]];
+                    [plusOne setOpacity:1.0];
+                    [plusOne setColor:[CCColor greenColor]];
+                }
                 [spinner runAction:[spinForever copy]];
             }
         }
@@ -362,9 +367,12 @@ static Board *sharedBoard = nil;
     else {
         for (CCNode* latticePoint in lattices) {
             CCSprite *spinner = latticePoint.children[0];
+            CCLabelTTF *plusOne = latticePoint.children[1];
             [spinner stopAllActions];
             [spinner setColor:[CCColor whiteColor]];
             [spinner setOpacity:0.0];
+            [plusOne setColor:[CCColor whiteColor]];
+            [plusOne setOpacity:0.0];
         }
     }
 }
