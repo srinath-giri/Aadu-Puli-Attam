@@ -25,7 +25,7 @@ static BOOL enabled = false;
     enabled = enable;
 }
 
-- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+- (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
     if (enabled) {
     [[Board sharedBoard] glowTigers:false];
@@ -34,7 +34,7 @@ static BOOL enabled = false;
     }
 }
 
-- (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
+- (void)touchMoved:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
     if (enabled) {
     CGPoint touchLocation = [touch locationInNode:self.parent];
@@ -44,7 +44,7 @@ static BOOL enabled = false;
     }
 }
 
-- (void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+- (void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
     if (enabled) {
     if([[Board sharedBoard] moveTiger:self])
@@ -56,7 +56,7 @@ static BOOL enabled = false;
     }
 }
 
-- (void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
+- (void)touchCancelled:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
     if (enabled) {
     self.position = previousPosition;

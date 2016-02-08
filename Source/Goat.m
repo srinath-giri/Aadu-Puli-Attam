@@ -52,7 +52,7 @@
     }
 }
 
-- (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
+- (void)touchMoved:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
     if (self.isMovable) {
     CGPoint touchLocation = [touch locationInNode:self.parent];
@@ -62,7 +62,7 @@
     }
 }
 
-- (void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+- (void)touchEnded:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
     if (self.isMovable) {
         //CCLOG(@"touchEnded:%f %f",self.position.x,self.position.y);
@@ -77,7 +77,7 @@
     
 }
 
-- (void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
+- (void)touchCancelled:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
     if (self.isMovable) {
     self.position = self.previousPosition;

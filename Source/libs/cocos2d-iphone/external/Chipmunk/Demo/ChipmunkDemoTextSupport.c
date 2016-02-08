@@ -149,7 +149,7 @@ static GLsizei triangle_capacity = 0;
 static GLsizei triangle_count = 0;
 static Triangle *triangle_buffer = NULL;
 
-static Triangle *PushTriangles(size_t count)
+static Triangle *PushTriangles(GLsizei count)
 {
 	if(triangle_count + count > triangle_capacity){
 		triangle_capacity += MAX(triangle_capacity, count);
@@ -197,7 +197,7 @@ PushChar(int character, GLfloat x, GLfloat y, cpSpaceDebugColor color)
 #undef ChipmunkDemoTextDrawString
 
 void
-ChipmunkDemoTextDrawString(cpVect pos, char *str)
+ChipmunkDemoTextDrawString(cpVect pos, char const *str)
 {
 	cpSpaceDebugColor c = LAColor(1.0f, 1.0f);
 	GLfloat x = (GLfloat)pos.x, y = (GLfloat)pos.y;
